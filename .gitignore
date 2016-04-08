@@ -13,6 +13,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+.idea/
+client/.*/
+.*
 
 # Windows shortcuts
 *.lnk
@@ -27,8 +30,6 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
-.idea
-client/.idea
 # Thumbnails
 ._*
 
