@@ -1,0 +1,38 @@
+    Vagrant.configure(2) do |config|
+    # Configurazioni comuni.
+
+    # Ubuntu trusty 64 VirtualBox.
+    config.vm.box = "ubuntu/trusty64"
+
+    config.vm.define "webServer" do |web|
+        web.vm.hostname = "webServer"    
+        web.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
+
+		web.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
+        web.ssh.forward_agent = true
+
+        web.vm.network "forwarded_port", guest: 80, host: 3000, id: 'express', auto_correct: true
+        web.ssh.forward_agent = true
+
+        web.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+    	end
+        
+		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
+	end
+
+	config.vm.define "database" do |db|
+        db.vm.hostname = "database"    
+        db.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
+
+		db.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
+        db.ssh.forward_agent = true
+
+        db.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+    	end
+        
+		db.vm.provision :shell, path: "script/conf.sh", :args => "db" 
+	end
+
+end
