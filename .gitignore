@@ -1,7 +1,7 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
-client/node_modules
+webserver/node_modules
 # Folder config file
 Desktop.ini
 
@@ -14,7 +14,7 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 .idea/
-client/.*/
+webserver/.*/
 .*
 
 
