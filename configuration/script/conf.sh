@@ -1,15 +1,16 @@
 #!/bin/bash
 
-echo $1
-
-#configuration for only database machine 
-if [ $1 == "db" ]; then
- apt-get install -y mongodb
+echo "$1"
 
 #configuration on  all virtual machine machine
 apt-get update
-apt-get install -y nodejs
 
+if [ $1 == "ws" ]; then
+	sudo apt-get install -y nodejs; sudo ln -s /usr/bin/nodejs /usr/bin/node
+fi
+#prepare database machine for puppet provisioning
+if [ $1 == "db" ]; then
+	mkdir -p /etc/puppet/modules; puppet module install puppetlabs-mongodb
+fi
 echo "configuration complete"
 
-fi
