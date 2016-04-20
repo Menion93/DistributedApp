@@ -17,6 +17,7 @@ $RECYCLE.BIN/
 webserver/.*/
 data
 start_mongo.bat
+webserver/data/
 .*
 
 

@@ -32,7 +32,11 @@
             v.memory = 1024 
     	end
         
-		db.vm.provision :shell, path: "script/conf.sh", :args => "db" 
+		db.vm.provision :shell, path: "script/conf.sh", :args => "db"
+		db.vm.provision :puppet do |puppet|
+  				puppet.manifests_path = "puppet/manifest"
+  				puppet.manifest_file = "initMongo.pp"
+		end
 	end
 
 end
