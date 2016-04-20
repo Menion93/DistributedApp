@@ -32,10 +32,16 @@
             v.memory = 1024 
     	end
         
-		db.vm.provision :shell, path: "script/conf.sh", :args => "db"
+        db.vm.provision :shell, path: "script/conf.sh", :args => "db"
+
+        #install mongo server via puppet
 		db.vm.provision :puppet do |puppet|
   				puppet.manifests_path = "puppet/manifest"
   				puppet.manifest_file = "initMongo.pp"
+
+        #setup the data path for mongo, everytime the machine is booted 
+        db.vm.provision :shell, inline: "mongod --dbpath=/usr/data", run: "always"
+        
 		end
 	end
 

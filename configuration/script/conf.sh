@@ -10,7 +10,10 @@ if [ $1 == "ws" ]; then
 fi
 #prepare database machine for puppet provisioning
 if [ $1 == "db" ]; then
-	mkdir -p /etc/puppet/modules; puppet module install puppetlabs-mongodb
+	mkdir -p /etc/puppet/modules;
+	puppet module install puppetlabs-mongodb;
+	mkdir /usr/data
 fi
+
 echo "configuration complete"
 
