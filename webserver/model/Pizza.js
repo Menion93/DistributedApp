@@ -13,8 +13,7 @@ module.exports = function() {
         name: String,
         description: String,
         base: String,
-        ingredients: [Number]
-        // Add an image
+        _ingredients: [{type:'ObjectId', ref:'Ingredient'}]
         //Maybe add something else
 
     });

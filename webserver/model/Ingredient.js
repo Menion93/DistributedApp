@@ -11,7 +11,8 @@ module.exports = function() {
     // define schema
     var IngredientSchema = new Schema({
         name: String,
-        description: String
+        description: String,
+        _pizzas: [{type:'ObjectId', ref:'Pizza'}]
         // Add an image
     });
     mongoose.model('Ingredient', IngredientSchema);
