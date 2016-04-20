@@ -100,7 +100,7 @@ module.exports = {
             pizza.save(function(err){
                 if(err)
                     return console.log(err)
-                updateIngredients(ingredients, pizza._id)
+                updateIngredients(ingredients, pizza._id);
                 callback()
             })
         })
