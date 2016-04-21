@@ -4,7 +4,7 @@
 
 
 var mongoose = require('mongoose');
-var facade = require('../../facade/DbFacade');
+var facade = require('.././DbRepository');
 
 mongoose.connect('mongodb://localhost/TestPizzeDB');
 
