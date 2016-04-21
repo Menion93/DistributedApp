@@ -14,11 +14,13 @@ var Ingredient = mongoose.model('Ingredient');
 
 module.exports = {
     findAllPizzas : function(callback){
-        Pizza.find({}, function(err,result){
-            if(err)
-                return console.log(err);
-            callback(result)
-        })
+        Pizza.find({})
+            .populate('_ingredients')
+            .exec(function (err, result) {
+                if (err)
+                    return console.log(err);
+                callback(result)
+            });
     },
 
     // Needed only for testing
