@@ -51,9 +51,9 @@ module.exports = {
         })
     },
 
-    findPizza : function(pizza, callback){
+    findPizza : function(name, callback){
         Pizza
-            .findOne({ 'name': pizza })
+            .findOne({ 'name': name })
             .populate('_ingredients')
             .exec(function (err, result) {
                 if (err) 
@@ -73,7 +73,7 @@ module.exports = {
             });
     },
 
-    findPizzasFromIngredient : function(ingredient,callback){
+    findPizzasFromIngredient : function(name,callback){
         Ingredient
             .findOne({ 'name': name })
             .populate('_pizzas')
