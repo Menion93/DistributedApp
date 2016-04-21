@@ -1,0 +1,3 @@
+cd configuration
+vagrantup
+pause
