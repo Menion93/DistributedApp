@@ -12,7 +12,6 @@ fi
 if [ $1 == "db" ]; then
 	mkdir -p /etc/puppet/modules;
 	puppet module install puppetlabs-mongodb;
-	mkdir /usr/data
 fi
 
 echo "configuration complete"

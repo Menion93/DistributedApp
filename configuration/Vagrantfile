@@ -11,13 +11,15 @@
 		web.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
         web.ssh.forward_agent = true
 
-        web.vm.network "forwarded_port", guest: 80, host: 3000, id: 'express', auto_correct: true
+        web.vm.network "forwarded_port", guest: 3000, host: 80, id: 'express', auto_correct: true
         web.ssh.forward_agent = true
 
         web.vm.provider "virtualbox" do |v| 
             v.memory = 1024 
     	end
         
+        web.vm.synced_folder "../shared/project/", "/home/vagrant/project", :mount_options => ["dmode=777", "fmode=777"]
+
 		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
 	end
 
@@ -29,9 +31,12 @@
         db.ssh.forward_agent = true
 
         db.vm.provider "virtualbox" do |v| 
+
             v.memory = 1024 
     	end
         
+        db.vm.synced_folder "../shared/data/", "/home/vagrant/data", :mount_options => ["dmode=777", "fmode=777"]
+
         db.vm.provision :shell, path: "script/conf.sh", :args => "db"
 
         #install mongo server via puppet
@@ -40,7 +45,7 @@
   				puppet.manifest_file = "initMongo.pp"
 
         #setup the data path for mongo, everytime the machine is booted 
-        db.vm.provision :shell, inline: "mongod --dbpath=/usr/data", run: "always"
+        db.vm.provision :shell, inline: "mongod --dbpath=/home/vagrant/data", run: "always"
         
 		end
 	end
