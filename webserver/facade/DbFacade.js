@@ -60,6 +60,17 @@ module.exports = {
             });
     },
 
+    findIngredient : function(name, callback){
+        Ingredient
+            .findOne({ 'name': name })
+            .populate('_pizzas')
+            .exec(function (err, result) {
+                if (err)
+                    return console.log(err);
+                callback(result)
+            });
+    },
+
     findPizzasFromIngredient : function(ingredient,callback){
         Ingredient
             .findOne({ 'name': name })
