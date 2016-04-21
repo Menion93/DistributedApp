@@ -2,12 +2,23 @@
 
 echo "$1"
 
-#configuration on  all virtual machine machine
 apt-get update
 
+#prepare webServer machine for puppet provisioning
 if [ $1 == "ws" ]; then
-	sudo apt-get install -y nodejs; sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+	#remove old puppet modules if present
+	sudo rm -r /etc/puppet/modules
+
+	#install latest puppet modules
+	mkdir -p /etc/puppet/modules;
+	puppet module install willdurand-nodejs;
+
+	sudo apt-get install -y nodejs; 
+	sudo apt-get install -y npm;
+	sudo ln -s /usr/bin/nodejs /usr/bin/node
 fi
+
 #prepare database machine for puppet provisioning
 if [ $1 == "db" ]; then
 	mkdir -p /etc/puppet/modules;

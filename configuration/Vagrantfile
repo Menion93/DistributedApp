@@ -21,6 +21,11 @@
         web.vm.synced_folder "../shared/project/", "/home/vagrant/project", :mount_options => ["dmode=777", "fmode=777"]
 
 		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
+
+        web.vm.provision :puppet do |puppet|
+                puppet.manifests_path = "puppet/manifest"
+                puppet.manifest_file = "initNode.pp"
+        end
 	end
 
 	config.vm.define "database" do |db|
@@ -31,7 +36,6 @@
         db.ssh.forward_agent = true
 
         db.vm.provider "virtualbox" do |v| 
-
             v.memory = 1024 
     	end
         
@@ -43,11 +47,12 @@
 		db.vm.provision :puppet do |puppet|
   				puppet.manifests_path = "puppet/manifest"
   				puppet.manifest_file = "initMongo.pp"
+        end
 
         #setup the data path for mongo, everytime the machine is booted 
         db.vm.provision :shell, inline: "mongod --dbpath=/home/vagrant/data", run: "always"
         
-		end
+		
 	end
 
 end
