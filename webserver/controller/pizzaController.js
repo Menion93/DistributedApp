@@ -13,12 +13,9 @@ var pizzaController = {
     },
     createPizza: function(req, res) {
         var idList=[];                                      //ID list of selected ingredients
-        for (var key in req.body){
-            if(req.body.hasOwnProperty(key)){
-                if(key!="name" && key !="description" && key != "base"){
-                    idList.push(key);
-                }
-            }
+        var length= req.body.ingredients.length;
+        for (var i=0; i<length; i++){
+            idList.push(req.body.ingredients[i]);
         }
 
         repository.addPizza(req.body.name, req.body.description, req.body.base, idList, function(err){

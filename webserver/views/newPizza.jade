@@ -15,7 +15,7 @@ block content
         br
         div Select ingredients for your pizza:
             each ingredient in ingredientList
-                input(type='checkbox', name='#{ingredient._id}', value='#{ingredient.name}')
+                input(type='checkbox', name='ingredients', value='#{ingredient._id}')
                 | #{ingredient.name}
         br
         br
