@@ -1,9 +1,15 @@
-//Created by Miriana on 19/04/2016.
-
 extends layout
 
 block content
-    h1 Existing ingredients:
+    if ingredientList.length == 0
+        h1 There are no ingredients!
+    else
+        h1 Existing ingredients:
+        ul
+            each ingredient in ingredientList
+                li name: #{ingredient.name}, description: #{ingredient.description}
+
+
     br
     a(href='/') Torna alla homepage
 

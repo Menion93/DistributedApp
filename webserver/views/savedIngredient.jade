@@ -1,8 +1,10 @@
-//Created by Miriana on 19/04/2016.
-
 extends layout
 
 block content
     h1 Thanks for your contribute!
+    h2 You propose this ingredient:
+    ul
+        li Name: #{name}
+        li Description: #{description}
     br
     a(href='/') Torna alla homepage

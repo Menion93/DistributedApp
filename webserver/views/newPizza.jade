@@ -1,22 +1,23 @@
-//Created by Miriana on 19/04/2016.
-
 extends layout
 
 block content
     h1 Your idea is important for us!
     h2 Propose your pizza:
+    br
     form(action='/save_pizza', method='POST')
-        | Name:
-        input(type='text', name='name')
+        div Name:
+            input(type='text', id='idName', name='name')
+        div Description:
+            input(type='text', id='idDescription', name='description')
+        div Base:
+            input(type='text', id='idBase', name='base')
         br
-        | Description:
-        input(type='text', name='description')
         br
-        | Base:
-        input(type='text', name='base')
+        div Select ingredients for your pizza:
+            each ingredient in ingredientList
+                input(type='checkbox', name='#{ingredient._id}', value='#{ingredient.name}')
+                | #{ingredient.name}
         br
-        //| Ingredient's list:
-        //input(type='text', name='ingredient_list')
         br
         input(type='submit', value='Save')
     br

@@ -1,8 +1,16 @@
-//Created by Miriana on 19/04/2016.
-
 extends layout
 
 block content
     h1 Thanks for your contribute!
+    h2 You propose this pizza:
+    ul
+        li Name: #{pizza.name}
+        li Description: #{pizza.description}
+        li Base: #{pizza.base}
+    br
+    h3 Ingredient's list:
+    ul
+        each value in pizza._ingredients
+            li name: #{value.name}, description: #{value.description}
     br
     a(href='/') Torna alla homepage

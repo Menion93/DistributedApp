@@ -1,5 +1,6 @@
 var express = require('express');
-var controller = require('../controller/controller');
+var ingredientController = require('../controller/ingredientController');
+var pizzaController = require('../controller/pizzaController');
 var router = express.Router();
 
 /* GET home page. */
@@ -7,17 +8,16 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/ingredients', controller.getIngredients);
+router.get('/ingredients', ingredientController.getIngredients);
 
-router.get('/pizzas', controller.getPizzas);
+router.get('/newIngredient', ingredientController.formNewIngredient);
 
-router.get('/newIngredient', controller.createIngredient);
+router.post('/save_ingredient', ingredientController.createIngredient);
 
-router.get('/newPizza', controller.createPizza);
+router.get('/pizzas', pizzaController.getPizzas);
 
-router.post('/save_ingredient', controller.showSavedIngredient);
+router.get('/newPizza', pizzaController.formNewPizza);
 
-router.post('/save_pizza', controller.showSavedPizza);
-
+router.post('/save_pizza', pizzaController.createPizza);
 
 module.exports = router;

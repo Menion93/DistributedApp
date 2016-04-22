@@ -1,8 +1,15 @@
-//Created by Miriana on 19/04/2016.
-
 extends layout
 
 block content
-    h1 Existing pizzas:
+    if pizzaList.length == 0
+        h1 There are no pizzas!
+    else
+        h1 Existing pizzas:
+        ul
+            each pizza in pizzaList
+                li name: #{pizza.name}, description: #{pizza.description}, base: #{pizza.base}
+                    div
+                        each ingredient in pizza._ingredients
+                            span #{ingredient.name} #{ingredient.description},
     br
     a(href='/') Torna alla homepage
