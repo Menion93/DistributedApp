@@ -19,6 +19,12 @@ var ingredientController = {
                res.render('savedIngredient.jade', result);
            })
         });
+    },
+    getIngredientDetails: function(req,res){
+        var nameIngredient = req.query.parameter;                        //parameter contains the name of ingredient
+        repository.findIngredient(nameIngredient, function(result){
+            res.render('ingredientDetails.jade', {ingredient: result});
+        });
     }
 }
 

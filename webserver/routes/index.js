@@ -14,10 +14,13 @@ router.get('/newIngredient', ingredientController.formNewIngredient);
 
 router.post('/save_ingredient', ingredientController.createIngredient);
 
+router.get('/ingredientDetails', ingredientController.getIngredientDetails);
+
 router.get('/pizzas', pizzaController.getPizzas);
 
 router.get('/newPizza', pizzaController.formNewPizza);
 
 router.post('/save_pizza', pizzaController.createPizza);
+
 
 module.exports = router;
