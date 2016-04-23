@@ -12,11 +12,7 @@ var pizzaController = {
         });
     },
     createPizza: function(req, res) {
-        var idList=[];                                      //ID list of selected ingredients
-        var length= req.body.ingredients.length;
-        for (var i=0; i<length; i++){
-            idList.push(req.body.ingredients[i]);
-        }
+        var idList= req.body.ingredients;                                      //ID list of selected ingredients
 
         repository.addPizza(req.body.name, req.body.description, req.body.base, idList, function(err){
             if(err){
