@@ -1,7 +1,41 @@
 doctype html
-html
+html(lang='en')
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Propose your Pizza
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    style.
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+      body {
+        font-family: Georgia, serif;
+        font-size: large;
+      }
   body
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') PYP
+        #myNavbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/') Home
+            li
+              a(href='/ingredients') Existing Ingredients
+            li
+              a(href='/newIngredient') Propose your Ingredient
+            li
+              a(href='/pizzas') Existing Pizzas
+            li
+              a(href='/newPizza') Propose your Pizza
     block content

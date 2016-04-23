@@ -1,16 +1,138 @@
-extends layout
-
-block content
-   h1 PROPOSE YOUR PIZZA!!
-   h2 Take a look at existing pizza or propose your idea
-   ul
-    li
-      a(href='/ingredients') Existing ingredients
-    li
-      a(href='/pizzas') Existing pizzas
-    li
-      a(href='/newIngredient') Propose your ingredient
-    li
-      a(href='/newPizza') Propose your pizza
-   footer
-    small Design by Andrea Salvoni, Miriana Mancini and Valerio Gregori
+doctype html
+html(lang='en')
+    head
+        title Propose your Pizza
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+        script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+        style.
+            /* Remove the navbar's default margin-bottom and rounded borders */
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+            /* Add a gray background color and some padding to the footer */
+            footer {
+                background-color: #708090;
+                padding: 25px;
+            }
+            body {
+                font-family: Georgia, serif;
+                font-size: large;
+            }
+            h1 {
+                font-family: Algerian, serif;
+                font-size: 300%;
+            }
+            h3 {
+                color: white;
+            }
+            .well{
+                text-align: center;
+                margin-top: 30px;
+            }
+            .carousel-inner img {
+                width: 100%; /* Set width to 100% */
+                margin: auto;
+                min-height:200px;
+            }
+            /* Hide the carousel text when the screen is less than 600 pixels wide */
+            @media (max-width: 600px) {
+                .carousel-caption {
+                    display: none;
+                }
+            }
+    body
+        div.container-fluid(style='background-color:#F44336;color:#fff;')
+            h1 PROPOSE YOUR PIZZA!
+            h2 The first website where you can create the pizza of your dream
+            br
+            br
+        nav.navbar.navbar-inverse
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') PYP
+                        //img.img-responsive(alt='Brand', src='images/images.jpg')
+                #myNavbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='/') Home
+                        li
+                            a(href='/ingredients') Existing Ingredients
+                        li
+                            a(href='/newIngredient') Propose your Ingredient
+                        li
+                            a(href='/pizzas') Existing Pizzas
+                        li
+                            a(href='/newPizza') Propose your Pizza
+                    //ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='#')
+                                span.glyphicon.glyphicon-log-in
+                                |  Login
+        #myCarousel.carousel.slide(data-ride='carousel')
+            // Indicators
+            ol.carousel-indicators
+                li.active(data-target='#myCarousel', data-slide-to='0')
+                li(data-target='#myCarousel', data-slide-to='1')
+            // Wrapper for slides
+            .carousel-inner(role='listbox')
+                .item.active
+                    img.img-responsive(src='images/Pizza.jpg', alt='Image')
+                    .carousel-caption
+                        h3 Take a look at existing pizzas
+                        //p in our website
+                .item
+                    img.img-responsive(src='images/Pizza2.jpg', alt='Image')
+                    .carousel-caption
+                        h3 Propose your idea!!
+                        //p bla bla bla
+            // Left and right controls
+            a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                span.sr-only Previous
+            a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+                span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                span.sr-only Next
+        .container.text-center
+            h1
+                b Traditional pizzas!
+            br
+            .row
+                .col-sm-4
+                    img.img-responsive(src='images/rucola_pachino.jpg', style='width:100%', alt='Image')
+                    p Rucola and Pachino
+                .col-sm-4
+                    img.img-responsive(src='images/boscaiola.jpg', style='width:100%', alt='Image')
+                    p Boscaiola
+                .col-sm-4
+                    img.img-responsive(src='images/pizza-margherita.jpg', style='width:100%', alt='Image')
+                    p Margherita
+                    //.well
+                        p In this website you can take a look at existing pizzas or propose your idea
+            .row
+                .col-sm-4
+                    img.img-responsive(src='images/ham_potato.png', style='width:100%', alt='Image')
+                    p Ham and Potatos
+                .col-sm-4
+                    img.img-responsive(src='images/pizza-wurstel-patatine.jpg', style='width:100%', alt='Image')
+                    p Potatos and Wurstel
+                .col-sm-4
+                    img.img-responsive(src='images/bresaola_rucola.jpg', style='width:100%', alt='Image')
+                    p Bresaola and Rucola
+                    //.well
+                        p Contribute with your Fantasy!
+            .row
+                .well
+                    p In this website you can take a look at existing pizzas or propose your idea.
+                    p Contribute with your Fantasy!
+        br
+        footer.container-fluid.text-center
+            p
+                b Design by Andrea Salvoni, Miriana Mancini and Valerio Gregori
