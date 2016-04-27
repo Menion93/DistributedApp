@@ -9,18 +9,19 @@ block content
         - var nRow = len/3
         - var i=0
         - for(nRow; nRow>0; nRow--){
-            .row
+            .row.row-centered
                 - var z=3
                 if ( (len - i) < 3)
                     - z = (len - i)
                 - for(z; z>0; z--){
-                        .col-sm-3
+                        .col-sm-3.centered
                             .thumbnail
                                 img.img-responsive(src='images/ingredienti.jpg', style='width:100%', alt='Image')
                                 .caption
                                     h3.ingredientPage #{ingredientList[i].name}
-                                    p #{ingredientList[i].description}
-                                    a.btn.btn-primary(href='/ingredientDetails?parameter=#{ingredientList[i].name}') Details
+                                    p.thumb #{ingredientList[i].description}
+                                    p.dButton
+                                        a.btn.btn-primary(href='/ingredientDetails?parameter=#{ingredientList[i].name}') Details
                 - i= i+1
                 - }
         - }
