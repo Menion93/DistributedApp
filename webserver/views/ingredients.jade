@@ -4,24 +4,26 @@ block content
     if ingredientList.length == 0
         h1 There are no ingredients!
     else
-        h1.ingredientPage Existing ingredients
+        h1.mainHead Existing ingredients
         - var len = ingredientList.length
         - var nRow = len/3
         - var i=0
         - for(nRow; nRow>0; nRow--){
-            .row.row-centered
+            .row.text-centered
                 - var z=3
                 if ( (len - i) < 3)
                     - z = (len - i)
                 - for(z; z>0; z--){
-                        .col-sm-3.centered
+                        .col-sm-3.col-centered
                             .thumbnail
                                 img.img-responsive(src='images/ingredienti.jpg', style='width:100%', alt='Image')
                                 .caption
-                                    h3.ingredientPage #{ingredientList[i].name}
+                                    h3.thumb #{ingredientList[i].name}
                                     p.thumb #{ingredientList[i].description}
-                                    p.dButton
+                                    p.text-centered
                                         a.btn.btn-primary(href='/ingredientDetails?parameter=#{ingredientList[i].name}') Details
                 - i= i+1
                 - }
         - }
+
+include footer
