@@ -58,7 +58,7 @@ footer {
     padding: 25px;
 }
 
-.myForm {
+.myForm, .myContainer {
     margin:auto;
     margin-top:7%;
     width:70%

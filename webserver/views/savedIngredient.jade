@@ -1,8 +1,19 @@
 extends layout
 
 block content
-    h1 Thanks for your contribute!
-    h2 You propose this ingredient:
-    ul
-        li Name: #{name}
-        li Description: #{description}
+
+    .myContainer
+        .div-auto.text-centered
+            .panel.panel-danger.myContainer
+                div
+                    h1.mainHead Thanks for your contribute!
+                .panel-body
+                    h2 You propose this ingredient:
+
+                    .col-md-6.col-centered
+                        .thumbnail
+                            img.img-responsive(src='images/ingredienti.jpg', style='width:100%', alt='Image')
+                            .caption
+                                h3.thumb #{name}
+                                p.thumb.init #{description}
+                                p.text-centered
