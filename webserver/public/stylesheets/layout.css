@@ -57,3 +57,13 @@ footer {
     background-color: #708090;
     padding: 25px;
 }
+
+.myForm {
+    margin:auto;
+    margin-top:7%;
+    width:70%
+}
+
+.div-auto {
+    margin:auto;
+}
