@@ -1,22 +1,27 @@
 extends layout
 
 block content
-    h1 Your idea is important for us!
-    h2 Propose your pizza:
-    br
-    form(action='/save_pizza', method='POST')
-        div Name:
-            input(type='text', id='idName', name='name')
-        div Description:
-            input(type='text', id='idDescription', name='description')
-        div Base:
-            input(type='text', id='idBase', name='base')
-        br
-        br
-        div Select ingredients for your pizza:
-            each ingredient in ingredientList
-                input(type='checkbox', name='ingredients', value='#{ingredient._id}')
-                | #{ingredient.name}
-        br
-        br
-        input(type='submit', value='Save')
+    h1.ingredientPage Propose a new Pizza!
+
+    .div(style="margin:auto; margin-top:7%; width:70%")
+        .col-md-8.col-md-offset-2
+            .panel.panel-danger
+                div
+                    h1.ingredientPage Fill and Submit
+                .panel-body
+                    div(style="margin:auto;")
+                        form(action='/save_pizza', method='POST')
+                            .form-group
+                                label Name
+                                input.form-control(type='text', placeholder='Name', name='name')
+                            .form-group
+                                label Description
+                                input.form-control(type='text', placeholder='Description', name='description')
+                            .form-group
+                                label Base
+                                input.form-control(type='text', placeholder='Base', name='base')
+                            div Select ingredients for your pizza:
+                                each ingredient in ingredientList
+                                    input(type='checkbox', name='ingredients', value='#{ingredient._id}')
+                                    | #{ingredient.name}
+                            button.btn.btn-default(type='submit') Submit
