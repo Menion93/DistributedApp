@@ -19,7 +19,7 @@ block content
                                 img.img-responsive(src='images/ingredienti.jpg', style='width:100%', alt='Image')
                                 .caption
                                     h3.thumb #{ingredientList[i].name}
-                                    p.thumb #{ingredientList[i].description}
+                                    p.thumb.init #{ingredientList[i].description}
                                     p.text-centered
                                         a.btn.btn-primary(href='/ingredientDetails?parameter=#{ingredientList[i].name}') Details
                 - i= i+1

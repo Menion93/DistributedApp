@@ -24,12 +24,23 @@ h3.thumb {
     text-align: center;
     border-bottom: solid;
     border-bottom-width: thin;
+    margin-top: 8px;
 }
 
 p.thumb {
-    font-family: initial;
-    font-size: smaller;
     height: 56px;
+    margin-bottom: 14px;
+}
+
+.init {
+    font-family: initial;
+    font-size: initial;
+}
+
+span.thumb{
+    font-size: initial;
+    font-style: italic;
+    font-weight: bold;
 }
 
 .text-centered{
