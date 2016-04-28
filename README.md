@@ -1,4 +1,4 @@
-# DistribuitedApp
+# DistributedApp
 First homework of System Software Architecture teached by Luca Cabibbo at University of Roma 3
 
 ##Setup of the enviroment
