@@ -1,32 +1,8 @@
-    Vagrant.configure(2) do |config|
+Vagrant.configure(2) do |config|
     # Configurazioni comuni.
 
     # Ubuntu trusty 64 VirtualBox.
-    config.vm.box = "ubuntu/trusty64"
-
-    config.vm.define "webServer" do |web|
-        web.vm.hostname = "webServer"    
-        web.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
-
-		web.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
-        web.ssh.forward_agent = true
-
-        web.vm.network "forwarded_port", guest: 3000, host: 80, id: 'express', auto_correct: true
-        web.ssh.forward_agent = true
-
-        web.vm.provider "virtualbox" do |v| 
-            v.memory = 1024 
-    	end
-        
-        web.vm.synced_folder "../shared/project/", "/home/vagrant/project", :mount_options => ["dmode=777", "fmode=777"]
-
-		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
-
-        web.vm.provision :puppet do |puppet|
-                puppet.manifests_path = "puppet/manifest"
-                puppet.manifest_file = "initNode.pp"
-        end
-	end
+	config.vm.box = "ubuntu/trusty64"
 
 	config.vm.define "database" do |db|
         db.vm.hostname = "database"    
@@ -51,8 +27,35 @@
 
         #setup the data path for mongo, everytime the machine is booted 
         db.vm.provision :shell, inline: "mongod --dbpath=/home/vagrant/data", run: "always"
+
+	end
+
+	config.vm.define "webServer" do |web|
+        web.vm.hostname = "webServer"    
+        web.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
+
+		web.vm.network "forwarded_port", guest: 22, host: 2211, id: 'ssh', auto_correct: true
+        web.ssh.forward_agent = true
+
+        web.vm.network "forwarded_port", guest: 3000, host: 80, id: 'express', auto_correct: true
+        web.ssh.forward_agent = true
+
+        web.vm.provider "virtualbox" do |v| 
+            v.memory = 1024 
+    	end
         
-		
+        web.vm.synced_folder "../shared/project/", "/home/vagrant/project", :mount_options => ["dmode=777", "fmode=777"]
+
+		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
+
+
+        web.vm.provision :puppet do |puppet|
+                puppet.manifests_path = "puppet/manifest"
+                puppet.manifest_file = "initNode.pp"
+        end
+
+    	#launch application
+    	#web.vm.provision :shell, inline: "node /home/vagrant/project/bin/www" 
 	end
 
 end
