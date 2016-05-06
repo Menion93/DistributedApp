@@ -10,7 +10,7 @@ var users = require('./routes/users');
 
 try {
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost:2212/PizzeDB');
+  mongoose.connect('mongodb://10.11.1.201:27018/PizzeDB');
 }catch (e) {
   console.log(e);
   console.log("Retrying...");

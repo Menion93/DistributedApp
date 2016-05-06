@@ -55,7 +55,7 @@ Vagrant.configure(2) do |config|
         end
 
     	#launch application
-    	#web.vm.provision :shell, inline: "node /home/vagrant/project/bin/www" 
+    	web.vm.provision :shell, inline: "node /home/vagrant/webserver/bin/www" 
 	end
 
 end
