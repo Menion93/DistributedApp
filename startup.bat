@@ -1,3 +1,3 @@
-cd configuration
-vagrantup
+cd environment
+vagrant up
 pause
