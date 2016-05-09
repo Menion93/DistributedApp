@@ -17,7 +17,9 @@ Vagrant.configure(2) do |config|
             v.memory = 1024 
     	end
 
-        db.vm.provision :shell, path: "script/conf.sh", :args => "db"
+	db.vm.synced_folder "../shared/data/", "/home/vagrant/data", :mount_options => ["dmode=777", "fmode=777"]
+
+        db.vm.provision :shell, path: "script/db-conf.sh"
 
         #install mongo server via puppet
 		db.vm.provision :puppet do |puppet|
@@ -46,16 +48,8 @@ Vagrant.configure(2) do |config|
         
         web.vm.synced_folder "../shared/webserver/", "/home/vagrant/webserver", :mount_options => ["dmode=777", "fmode=777"]
 
-		web.vm.provision :shell, path: "script/conf.sh", :args => "ws"
+		web.vm.provision :shell, path: "script/ws-conf.sh"
 
-
-        web.vm.provision :puppet do |puppet|
-                puppet.manifests_path = "puppet/manifest"
-                puppet.manifest_file = "initNode.pp"
-        end
-
-    	#launch application
-    	#web.vm.provision :shell, inline: "node /home/vagrant/webserver/bin/www &" 
 	end
 
 end
