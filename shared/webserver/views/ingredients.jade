@@ -2,7 +2,7 @@ extends layout
 
 block content
     if ingredientList.length == 0
-        h1 There are no ingredients!
+        h1.errorTitle There are no ingredients!
     else
         h1.mainHead Existing ingredients
         - var len = ingredientList.length

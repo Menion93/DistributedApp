@@ -2,7 +2,7 @@ extends layout
 
 block content
     if ingredient._pizzas.length == 0
-        The are no pizzas with #{ingredient.name}!
+        h1.errorTitle There are no pizzas with #{ingredient.name}!
     else
         h1.mainHead #{ingredient.name} is present in these pizzas:
 

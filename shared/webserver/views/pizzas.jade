@@ -2,7 +2,7 @@ extends layout
 
 block content
     if pizzaList.length == 0
-        h1 There are no pizzas!
+        h1.errorTitle There are no pizzas!
     else
         h1.mainHead Existing pizzas:
         - var len = pizzaList.length
@@ -28,5 +28,3 @@ block content
             - i= i+1
             - }
         - }
-
-        include footer

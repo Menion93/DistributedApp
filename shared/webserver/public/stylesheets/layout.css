@@ -18,6 +18,10 @@ h1.mainHead {
     padding: 8px;
 }
 
+h1.errorTitle{
+    text-align: center;
+}
+
 h3.thumb {
     font-style: italic;
     font-weight: bold;
