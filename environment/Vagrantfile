@@ -49,6 +49,9 @@ Vagrant.configure(2) do |config|
         web.vm.synced_folder "../shared/webserver/", "/home/vagrant/webserver", :mount_options => ["dmode=777", "fmode=777"]
 
 		web.vm.provision :shell, path: "script/ws-conf.sh"
+		
+		#start the server
+		web.vm.provision :shell, inline: "forever start /home/vagrant/webserver/bin/www", run: "always"
 
 	end
 
