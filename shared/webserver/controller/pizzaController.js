@@ -20,6 +20,17 @@ var pizzaController = {
             var idList= req.body.ingredients;
         }
 
+        /*VALIDATION*/
+        //verify the presence of mandatory field name
+        if(req.body.name=="" || req.body.name==undefined){
+            return res.render('errorNameMissing.jade');
+        }
+        //verify the presence of selected ingredients
+        if(Object.keys(req.body).length != 4){                      //there are no ingredients field
+            return res.render('errorIngredientsMissing.jade');      //there are no ingredients selected
+        }
+        
+        /*Save*/
         repository.addPizza(req.body.name, req.body.description, req.body.base, idList, function(err){
             if(err){
                 return res.render('persistenceError.jade', {'message' : err});

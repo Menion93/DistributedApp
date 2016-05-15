@@ -11,6 +11,9 @@ var ingredientController = {
         res.render('newIngredient.jade');
     },
     createIngredient: function(req, res) {
+        if(req.body.name=="" || req.body.name==undefined){
+            return res.render('errorNameMissing.jade');
+        }
         repository.addIngredient(req.body.name, req.body.description, function(err){
            if(err){
                return res.render('persistenceError.jade', {'message' : err});

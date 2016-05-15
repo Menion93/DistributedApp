@@ -20,6 +20,7 @@ block content
                             .form-group
                                 label Base
                                 input.form-control(type='text', placeholder='Base', name='base')
+                            br
                             div.pull-left
                                 button.btn.btn-default.btn-lg(type='button', data-toggle='modal', data-target='#myModal')
                                     | Add Ingredients
@@ -38,7 +39,10 @@ block content
                                                         | #{ingredient.name}
                                             .modal-footer
                                                 button.btn.btn-danger(type='button', data-dismiss='modal') Save changes
-                            div.pull-right
+                            br
+                            br
+                            br
+                            div.span7.text-center
                                 button.btn.btn-danger.btn-lg(type='submit') Submit
 
 
