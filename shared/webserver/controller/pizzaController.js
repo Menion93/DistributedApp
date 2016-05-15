@@ -12,7 +12,13 @@ var pizzaController = {
         });
     },
     createPizza: function(req, res) {
-        var idList= req.body.ingredients;                                      //ID list of selected ingredients
+        var idList;                                         //ID list of selected ingredients
+        if(typeof(req.body.ingredients)=='string'){         //only a selected ingredient
+            var idList = [req.body.ingredients]
+        }
+        else{
+            var idList= req.body.ingredients;
+        }
 
         repository.addPizza(req.body.name, req.body.description, req.body.base, idList, function(err){
             if(err){
