@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .myContainer
+        .div-auto.text-centered
+            .col-sm-9.col-centered
+                .thumbnail
+                    h1.errorTitle ERROR:
+                    h2.errorTitle Is not possible to propose a pizza without ingredients!
+                    h2.errorTitle You must select at least one ingredient.
+                    h3.errorTitle (if there are no ingredients, before propose them)
+                    br
+                    br
+                    div.span7.text-center
+                        a.btn.btn-danger(href='/newPizza') Try again

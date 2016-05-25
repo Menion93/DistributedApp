@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    h1.mainHead Propose a new Pizza!
+
+    .myForm
+        .col-md-8.col-md-offset-2
+            .panel.panel-danger
+                div
+                    h1.mainHead Fill and Submit
+                .panel-body
+                    .div-auto
+                        form(action='/save_pizza', method='POST')
+                            .form-group
+                                label Name
+                                input.form-control(type='text', placeholder='Name', name='name')
+                            .form-group
+                                label Description
+                                input.form-control(type='text', placeholder='Description', name='description')
+                            .form-group
+                                label Base
+                                input.form-control(type='text', placeholder='Base', name='base')
+                            br
+                            div.pull-left
+                                button.btn.btn-default.btn-lg(type='button', data-toggle='modal', data-target='#myModal')
+                                    | Add Ingredients
+                                #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+                                    .modal-dialog(role='document')
+                                        .modal-content
+                                            .modal-header
+                                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                                    span(aria-hidden='true') ×
+                                                h4#myModalLabel.modal-title
+                                                    label Choose your ingredient
+                                            .modal-body
+                                                each ingredient in ingredientList
+                                                    div
+                                                        input(type='checkbox', name='ingredients', value='#{ingredient._id}')
+                                                        | #{ingredient.name}
+                                            .modal-footer
+                                                button.btn.btn-danger(type='button', data-dismiss='modal') Save changes
+                            br
+                            br
+                            br
+                            div.span7.text-center
+                                button.btn.btn-danger.btn-lg(type='submit') Submit
+
+
+

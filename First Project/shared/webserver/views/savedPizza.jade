@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    .myContainer
+        .div-auto.text-centered
+            .panel.panel-danger.myContainer
+                div
+                    h1.mainHead Thanks for your contribute!
+                .panel-body
+                    h2 You propose this pizza:
+
+                    .col-md-6.col-centered
+                        .thumbnail
+                            img.img-responsive(src='images/pizze.jpg', style='width:100%', alt='Image')
+                            .caption
+                                h3.thumb #{pizza.name}
+                                span.thumb BASE: #{pizza.base}
+                                p.init #{pizza.description}
+                                span.init Ingredients:
+                                    ul
+                                        each ingredient in pizza._ingredients
+                                            li.init #{ingredient.name}

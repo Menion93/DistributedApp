@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1.mainHead Propose a new Ingredient!
+
+    .myForm
+        .col-md-8.col-md-offset-2
+            .panel.panel-danger
+                div
+                    h1.mainHead Fill and Submit
+                .panel-body
+                    .div-auto
+                        form(action='/save_ingredient', method='POST')
+                            .form-group
+                                label Name
+                                input.form-control(type='text', placeholder='Name', name='name')
+                            .form-group
+                                label Description
+                                input.form-control(type='text', placeholder='Description', name='description')
+                            br
+                            div.span7.text-center
+                                button.btn.btn-danger.btn-lg(type='submit') Submit
