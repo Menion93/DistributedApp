@@ -10,7 +10,7 @@ var ingredients = require('./routes/ingredients');
 
 try {
   var mongoose = require('mongoose');
-  mongoose.connect('mongodb://localhost/PizzeDB2');
+  mongoose.connect('mongodb://db:27017/PizzeDB2');
   //mongoose.connect('mongodb://10.11.1.201:27018/PizzeDB');
 }catch (e) {
   console.log(e);
