@@ -6,10 +6,10 @@ Gregori Valerio
 Mancini Miriana
 Salvoni Andrea
 
-##Setup of the enviroment for First Project
+##Setup of the environment for First Project
 - run startup.bat/sh
 
-##Setup of the enviroment for Second Project
+##Setup of the environment for Second Project
 For running project on Windows or Mac OX, create a VM with name "default" using docker-machine tool.
 - docker-machine create --driver virtualbox default
 - docker-machine start default
